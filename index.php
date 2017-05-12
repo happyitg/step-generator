@@ -95,7 +95,7 @@
         </td></tr>
  </table>
 
-<title>Génération de steps</title>
+<title>Step Generator</title>
 
 <!-- <link rel="stylesheet" href="style.css" type="text/css"> -->
 
@@ -124,13 +124,13 @@
     <tbody>
 		<tr style="text-align:center">
             <TH colspan="2" scope="col" class="rounded-q1">
-				<b>Génération de steps</b>
+				<b>Step Generator</b>
 			</TH>
 		</tr>
 
 		<tr>
 			<td> 
-				<p>Nombre de beats à générer: </p>
+				<p>Beats number to generate: </p>
 			</td>
 			<td>
 				<input name="nbeat" type="int" maxlength=3  value=''/>
@@ -140,16 +140,16 @@
 		
 		<tr>
 			<td> 
-				<p>Vitesse du rush: </p>
+				<p>Stream speed: </p>
 			</td>
 			<td >
 				<SELECT name="galore" >
-				<option value=16>16th galore
-				<option value=24>24th galore
-				<option value=32>32th galore
-				<option value=4>4th galore
-				<option value=8>8th galore
-				<option value=12>12th galore
+				<option value=16>16th
+				<option value=24>24th
+				<option value=32>32th
+				<option value=4>4th
+				<option value=8>8th
+				<option value=12>12th
 
 				</SELECT>
 			</td>
@@ -157,26 +157,26 @@
 		
 		<tr>
 			<td> 
-				<p>Première flèche du rush: </p>
+				<p>First arrow of the stream: </p>
 			</td>
 			<td >
 				<SELECT name="current" >
-				<option value='0001'>Droite
-				<option value='0010'>Haut
-				<option value='0100'>Bas
-				<option value='1000'>Gauche
+				<option value='0001'>Right
+				<option value='0010'>Up
+				<option value='0100'>Down
+				<option value='1000'>Left
 				</SELECT>
 			</td>
 		</tr>
 		
 		<tr>
 			<td> 
-				<p>Pied de la première flèche: </p>
+				<p>Foot on the first arrow: </p>
 			</td>
 			<td >
 				<SELECT name="foot" >
-				<option value='d'>Droit
-				<option value='g'>Gauche
+				<option value='d'>Right
+				<option value='g'>Left
 				</SELECT>
 			</td>
 		</tr>
@@ -188,7 +188,7 @@
 			<td colspan="2" align="center" >
 			<input type="hidden" name="send" value="1" >
 			
-			<input name ="Envoyer" type="submit" value="Générer chart" />
+			<input name ="Envoyer" type="submit" value="Generate stepchart" />
 			
 			</td>
 			

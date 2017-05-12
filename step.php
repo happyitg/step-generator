@@ -1,12 +1,12 @@
 <?php
 
-// pour réafficher la page d'index lorsque le formulaire est rempli
+// pour rÃ©afficher la page d'index lorsque le formulaire est rempli
 
 include ("index.php");
 
 
 
-/* a gérer 
+/* a gÃ©rer
 
 drills 
 candle
@@ -103,20 +103,21 @@ function next_arrow($foot, $current){
 
 // partie PHP
 
-if (!isset($_POST['send'])) die("Faut passer par le formulaire petit malin ;)");
-if (!isset($_POST['nbeat'])) die("Pas de nombre de beat renseigné petit malin ;)");
-if (($_POST['nbeat']) > 100) die("Nombre de beat limité à 100 max");
+if (!isset($_POST['send'])) die("You need to pass by index.php");
+if (!isset($_POST['nbeat'])) die("No beat number were indicated");
+if (($_POST['nbeat']) > 100) die("Beat number higher than 100");
 
 $foot=$_POST['foot'];
 $current=$_POST['current'];
 $nbeat=$_POST['nbeat'];
 $galore=$_POST['galore'];
 
+var_dump($_POST);
 
-// gestion du nombre de fleches à répétition => pas faire de drills
-// si up4 == up2 et up3 == up1 => début d'un drill, donc $wrong sera égale à ce qui devrait etre up0 en cas de drill => donc up4
+// gestion du nombre de fleches a rÃ©pÃ©tition => pas faire de drills
+// si up4 == up2 et up3 == up1 => dÃ©but d'un drill, donc $wrong sera Ã©gale Ã  ce qui devrait etre up0 en cas de drill => donc up4
 
-// désigne les fleches avant current, certains patern feront ressortir des fleches interdites
+// dÃ©signe les fleches avant current, certains patern feront ressortir des fleches interdites
 
 $arrow_memory = array (
 1 => '1',
@@ -161,41 +162,40 @@ for ($i=0; $i<$nbeat; $i++){
 		// print_r($arrow_memory);
 		// echo "</pre>";
 		
-		// gestion de chart après une séquence de drill annulé, pour éviter d'avoir des drills de 4 fleches trop partout.
-		/*
+		// gestion de chart aprï¿½s une sï¿½quence de drill annulï¿½, pour ï¿½viter d'avoir des drills de 4 fleches trop partout.
+
 		if (($arrow_memory[3] == $arrow_memory[1]) && ($count_wrong_drill >= 2 )){
 			
 			$wrong = $arrow_memory[2] ;
 			$count_wrong_drill ++;
-			if ($count_wrong_drill == 10) $count_wrong_drill = 0;
-			
+			if ($count_wrong_drill == 10){
+                $count_wrong_drill = 0;
+            }
 		}
 		
-		*/
-		
-		// gestion de chart après une séquence de repeat annulé
-		//else 
-			if ((($arrow_memory[4] == $arrow_memory[2]) 
+		// gestion de chart aprï¿½s une sï¿½quence de repeat annulï¿½
+		else if ((($arrow_memory[4] == $arrow_memory[2])
 					|| ($arrow_memory[6] == $arrow_memory[2]) 
 					|| ($arrow_memory[8] == $arrow_memory[2]))
 					&& ($count_wrong_repeat >= 1)){
 			
 			$wrong = $arrow_memory[2] ;
 			$count_wrong_repeat ++;
-			if ($count_wrong_repeat == 10) $count_wrong_repeat = 0;
-		
+			if ($count_wrong_repeat == 10){
+			    $count_wrong_repeat = 0;
+            }
 		}
-			
-		// début d'un drill
-		/*
+
+		// dÃ©but d'un drill
+
 		else if (( $arrow_memory[4] == $arrow_memory[2] ) && ($arrow_memory[3] == $arrow_memory[1])) {
 			
 			$wrong = $arrow_memory[2] ;
 			$count_wrong_drill ++;
 			
 		}
-		*/
-		// début d'une box (4 fleches regroupés, un drill de 4 fleches si on préfère)
+
+		// dÃ©but d'une box (4 fleches regroupï¿½s, un drill de 4 fleches si on prï¿½fï¿½re)
 		// pas de gestion de count drill vu que l'on ne veut aucune box
 		
 		else if ($arrow_memory[3] == $arrow_memory[1]) {
@@ -205,7 +205,7 @@ for ($i=0; $i<$nbeat; $i++){
 		}
 		
 		
-		// début d'une même flèche qui se répète plus de 4 fois => pas de 5eme fois
+		// dÃ©but d'une mÃªme flÃ¨che qui se rÃ©pÃ¨te plus de 4 fois => pas de 5eme fois
 		else if (($arrow_memory[8] == $arrow_memory[6]) &&($arrow_memory[8]== $arrow_memory[4]) && ($arrow_memory[8] == $arrow_memory[2])) {
 		
 			$wrong = $arrow_memory[2];
@@ -235,12 +235,12 @@ for ($i=0; $i<$nbeat; $i++){
 
 }
 
-// dernière fleche du rush qui a été calculé à la dernière boucle
+// derniÃ¨re fleche du rush qui a Ã©tÃ© calculÃ© Ã  la derniÃ¨re boucle
 $result .= $current."<br>0000<br>0000<br>0000<br>";
 
 
 ?>
-<center>
+<div align="center">
 <form action = "extract_step.php" name="form" method ="POST">
 <input type="hidden" name="steps" value="<?php echo $result;?>" >
 <input type="submit" value="Steps extract in txt">
@@ -251,4 +251,4 @@ $result .= $current."<br>0000<br>0000<br>0000<br>";
 <input type="hidden" name="steps" value="<?php echo $result;?>" >
 <input type="submit" value="Debug extract in xlsx">
 </form>
-</center>
+</div>
