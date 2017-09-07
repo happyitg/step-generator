@@ -5,4 +5,4 @@ Generate random stream with speed choice and without double steps.
 
 Output in txt for sm file and xlsx for clear view.
 
-Well... it's not currently working with github pages at the url https://happyitg.github.io/step-generator/
+Well I need to find a server to allow uses from the web...
